@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* ───────────────────────── LinkBiz design tokens - White & Orange ───────────────────────── */
+@theme {
+  /* Surfaces */
+  --color-canvas: #ffffff;
+  --color-surface: #ffffff;
+  --color-line: #e8e6e3;
+  --color-hover: #f5f3f1;
+  --color-search: #fdf3ec;
+  --color-tint: #fff4ec;
+
+  /* Brand - orange */
+  --color-action: #ea580c;
+  --color-action-hover: #c2410c;
+  --color-brand: #ea580c;
+  --color-brand-light: #fb923c;
+
+  /* Text */
+  --color-ink: #191919;
+  --color-ink-70: rgba(0, 0, 0, 0.75);
+  --color-muted: #666666;
+
+  /* Breakpoints */
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1128px;
+
+  --font-sans: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body {
+  background: #ffffff;
+  color: #191919;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ───────────────────────── Surfaces ───────────────────────── */
+.card {
+  @apply bg-white rounded-lg border border-line;
+  box-shadow: none;
+}
+.hairline { @apply border-t border-line; }
+
+/* ───────────────────────── Buttons ───────────────────────── */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-1.5 rounded-full bg-action px-4 py-1.5 text-sm font-semibold text-white transition-colors;
+  min-height: 32px;
+}
+.btn-primary:hover { background: #c2410c; }
+.btn-primary:disabled { @apply opacity-50 cursor-not-allowed; }
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-1.5 rounded-full border border-action bg-transparent px-4 py-1.5 text-sm font-semibold text-action transition-[box-shadow,background-color];
+  min-height: 32px;
+}
+.btn-outline:hover { background: #fff4ec; box-shadow: inset 0 0 0 1px #ea580c; }
+.btn-outline:disabled { @apply opacity-50 cursor-not-allowed; }
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-1.5 rounded-full border border-muted bg-transparent px-4 py-1.5 text-sm font-semibold text-muted transition-[box-shadow,background-color];
+  min-height: 32px;
+}
+.btn-ghost:hover { background: rgba(0, 0, 0, 0.06); box-shadow: inset 0 0 0 1px #666666; color: #191919; }
+.btn-ghost:disabled { @apply opacity-50 cursor-not-allowed; }
+
+.btn-text { @apply inline-flex items-center justify-center gap-2 rounded-md px-3 py-2.5 text-sm font-semibold text-muted transition-colors; }
+.btn-text:hover { background: rgba(0, 0, 0, 0.06); color: #191919; }
+
+/* ───────────────────────── Forms ───────────────────────── */
+.input { @apply w-full rounded-md border border-stone-400 bg-white px-3 py-2 text-sm text-ink placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-action focus:border-action; }
+.label { @apply block text-xs font-semibold text-muted mb-1; }
+.chip { @apply inline-flex items-center rounded-full bg-black/[0.05] px-2.5 py-0.5 text-xs font-medium text-ink-70; }
+
+/* ───────────────────────── Rows & skeletons ───────────────────────── */
+.row-hover { @apply transition-colors; }
+.row-hover:hover { background: rgba(0, 0, 0, 0.05); }
+.skeleton { @apply rounded bg-black/[0.07] animate-pulse; }
+.skeleton-circle { @apply rounded-full bg-black/[0.07] animate-pulse; }
+
+/* Live capacity dot */
+.dot-live { @apply inline-block h-2 w-2 rounded-full; box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15); }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.2); border-radius: 8px; }
+
+/* Default hairline border color for bare `border` utilities */
+*, ::before, ::after { border-color: var(--color-line); }
